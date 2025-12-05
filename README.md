@@ -13,16 +13,18 @@ This project implements a simple CRUD-style REST API for managing vehicles.
 
 ### 1. Install dependencies
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ### 2. Start the server
 
-uvicorn app:app --reload
+`uvicorn app:app --reload`
 
 API will be available at:
 http://localhost:8000
 
 ### 3. Run Tests
+
+`pytest -v`
 
 ## API Endpoints
 
@@ -42,8 +44,6 @@ http://localhost:8000
 - JSON parse errors → `400 Bad Request`
 
 ### 4. Data Model Table
-
-This table explains the specific fields required for a Vehicle (useful to include in your documentation as well).
 
 | Field            | Type    | Description                          |
 | :--------------- | :------ | :----------------------------------- |
