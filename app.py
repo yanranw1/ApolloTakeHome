@@ -8,12 +8,6 @@ from database import initialize_db
 app = FastAPI()
 initialize_db()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
 @app.get("/")
 def root():
     return {"status": "Vehicle API running"}
