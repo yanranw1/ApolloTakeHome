@@ -43,7 +43,7 @@ http://localhost:8000
 - Validation errors → `422 Unprocessable Entity`
 - JSON parse errors → `400 Bad Request`
 
-### 4. Data Model Table
+## Data Model Table
 
 | Field            | Type    | Description                          |
 | :--------------- | :------ | :----------------------------------- |
@@ -55,3 +55,14 @@ http://localhost:8000
 | `model_year`     | Integer | Year of the model                    |
 | `purchase_price` | Float   | Price (Decimal)                      |
 | `fuel_type`      | String  | Type of fuel                         |
+
+## Project Structure and File Usage
+
+| File                | Layer / Purpose                   | Description                                                                                                                                                                                         |
+| ------------------- | --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| app.py              | API Layer (Entry Point)           | Initializes the FastAPI application, sets up middleware, registers API routes (/vehicle), and defines global error handlers (for 422 validation and other exceptions).                              |
+| schemas.py          | Data Layer (Validation)           | Contains the Pydantic Vehicle model, which defines the strict structure and data types for all incoming and outgoing vehicle data. Includes custom validation logic (e.g., preventing null values). |
+| models.py           | Service Layer (CRUD Logic)        | Contains the core business logic functions (create_vehicle, get_vehicle, update_vehicle, delete_vehicle) that communicate directly with the database via database.py.                               |
+| database.py         | Persistence Layer (DB Connection) | Handles the initialization of the SQLite database (vehicles.db) and provides a connection factory (get_connection) used by the models layer to execute SQL queries.                                 |
+| test_vehicle_api.py | Testing Layer                     | Comprehensive test file using Pytest and FastAPI's TestClient to verify the functionality, error handling, and edge cases of every API endpoint.                                                    |
+| requirements.txt    | Dependencies                      | Lists all required Python libraries (FastAPI, uvicorn, gunicorn, pytest, etc.) for easy setup via pip.                                                                                              |
